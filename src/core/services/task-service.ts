@@ -1,0 +1,17 @@
+import {PaginationParams} from '../contracts/pagination-params';
+import {Status} from '../contracts/status';
+import {PaginationResult} from '../contracts/pagination-result';
+import {Task} from '../entities/task';
+import {GetAllTaskPaginatedRequest} from '../dtos/get-all-task-paginated-request';
+
+export interface ITaskService {
+  getAllTasksPaginated(dto: GetAllTaskPaginatedRequest): Promise<PaginationResult<Task>>;
+
+  getById(id: string): Promise<Task | null>;
+
+  create(task: Task): Promise<string>;
+
+  update(task: Task): Promise<void>;
+
+  delete(id: string): Promise<void>;
+}
