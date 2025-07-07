@@ -1,0 +1,30 @@
+main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 480px) {
+  main {
+    max-width: 440px;
+  }
+}
+
+@media (min-width: 768px) {
+  main {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1440px) {
+  main {
+    max-width: 1200px;
+  }
+}
