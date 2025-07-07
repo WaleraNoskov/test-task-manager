@@ -1,0 +1,8 @@
+<mat-list>
+  @for (task of tasks; track task.id) {
+    <mat-list-item [lines]="2">
+      <span matListItemTitle>{{task.title}}</span>
+      {{task.description}}
+    </mat-list-item>
+  }
+</mat-list>

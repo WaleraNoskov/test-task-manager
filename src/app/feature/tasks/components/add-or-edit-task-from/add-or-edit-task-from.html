@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="form">
+  <h3>{{ form.value.id ? 'Edit' : 'Create' }} income</h3>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title"/>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description"/>
+  </mat-form-field>
+
+  @if (isEditMode()) {
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        @for (option of statusOptions; track option) {
+          <mat-option [value]="option">
+            {{ option }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  }
+
+  <div class="actions">
+    <button matButton="filled" type="submit" [disabled]="form.invalid">
+      {{ form.value.id ? 'Save' : 'Create' }}
+    </button>
+    <button matButton="outlined" (click)="cancel()">Cancel</button>
+  </div>
+</form>

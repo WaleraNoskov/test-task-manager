@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {MatButton} from '@angular/material/button';
+import {ManageTasksWidget} from '../../widgets/manage-tasks-widget/manage-tasks-widget';
 
 @Component({
   selector: 'app-tasks-page',
   imports: [
-    MatButton
+    ManageTasksWidget
   ],
   templateUrl: './tasks-page.html',
   styleUrl: './tasks-page.scss'
