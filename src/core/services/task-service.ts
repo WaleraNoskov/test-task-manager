@@ -5,7 +5,7 @@ import {GetAllTaskPaginatedRequest} from '../dtos/get-all-task-paginated-request
 export interface ITaskService {
   getAllTasksPaginated(dto: GetAllTaskPaginatedRequest): Promise<PaginationResult<Task>>;
 
-  getById(id: string): Promise<Task | null>;
+  getById(id: number): Promise<Task | null>;
 
   create(task: Task): Promise<number>;
 

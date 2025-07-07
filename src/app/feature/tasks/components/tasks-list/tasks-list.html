@@ -5,6 +5,7 @@
       {{task.description}}
       <div matListItemMeta class="meta">
         <span class="status">{{getOptionsName(task.status)}}</span>
+        <button matButton="text" [routerLink]="['/tasks', task.id]">View</button>
         <button matIconButton [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>

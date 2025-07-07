@@ -4,6 +4,7 @@ import {TasksList} from '../../components/tasks-list/tasks-list';
 import {MatButton} from '@angular/material/button';
 import {AddOrEditTaskDialogService} from '../add-or-edit-task-dialog-service';
 import {Task} from '../../../../../core/entities/task';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-manage-tasks-widget',
@@ -17,11 +18,18 @@ import {Task} from '../../../../../core/entities/task';
 export class ManageTasksWidget implements OnInit {
   constructor(
     public readonly tasksStore: TasksStore,
-    private readonly addOrEditTaskDialogService: AddOrEditTaskDialogService
+    private readonly addOrEditTaskDialogService: AddOrEditTaskDialogService,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd && this.router.url === '/tasks') {
+        this.tasksStore.loadTasks();
+      }
+    });
+
     this.tasksStore.loadTasks();
   }
 

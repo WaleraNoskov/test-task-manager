@@ -1,0 +1,33 @@
+@if (task) {
+  <div class="header-container">
+    <mat-toolbar color="primary" class="header">
+      <mat-toolbar-row>
+        <h1 class="header-title">
+          {{ task.title }}
+        </h1>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <button matButton="text" (click)="onEdit(task)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button matButton="text" (click)="onDelete(task)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+
+  <div class="content">
+    <h2>Status</h2>
+    <span>{{ getOptionsName(task.status) }}</span>
+
+    <h2>Description</h2>
+    <span>{{ task.description }}</span>
+  </div>
+
+} @else {
+
+}

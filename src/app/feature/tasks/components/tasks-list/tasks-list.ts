@@ -2,9 +2,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Task} from '../../../../../core/entities/task';
 import {MatList, MatListItem, MatListItemTitle} from '@angular/material/list';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
-import {MatIconButton} from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {getOptionsName} from '../../../../../core/contracts/status';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-tasks-list',
@@ -16,7 +17,9 @@ import {getOptionsName} from '../../../../../core/contracts/status';
     MatIconButton,
     MatMenuItem,
     MatMenu,
-    MatIcon
+    MatIcon,
+    MatButton,
+    RouterLink
   ],
   templateUrl: './tasks-list.html',
   styleUrl: './tasks-list.scss'

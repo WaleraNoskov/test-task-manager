@@ -1,9 +1,9 @@
 import {GetAllTaskPaginatedRequest} from '../../core/dtos/get-all-task-paginated-request';
 import {ITaskService} from '../../core/services/task-service';
-import { IndexedDbService } from '../indexed-db.service';
+import {IndexedDbService} from '../indexed-db.service';
 import {PaginationResult} from '../../core/contracts/pagination-result';
 import {Injectable} from '@angular/core';
-import { Task } from '../../core/entities/task';
+import {Task} from '../../core/entities/task';
 import {Status} from '../../core/contracts/status';
 
 @Injectable({ providedIn: 'root' })
@@ -37,13 +37,12 @@ export class TaskService implements ITaskService {
     };
   }
 
-  async getById(id: string): Promise<Task | null> {
+  async getById(id: number): Promise<Task | null> {
     const db = await this.idbService.db;
     const tx = db.transaction('tasks', 'readonly');
     const store = tx.objectStore('tasks');
 
-    const numericId = Number(id);
-    return await store.get(numericId) ?? null;
+    return await store.get(id) ?? null;
   }
 
   async create(task: Task): Promise<number> {
