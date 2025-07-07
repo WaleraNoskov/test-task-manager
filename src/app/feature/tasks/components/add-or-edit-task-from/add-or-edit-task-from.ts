@@ -26,7 +26,11 @@ import {MatSelect} from '@angular/material/select';
 export class AddOrEditTaskFrom {
   form!: TaskFormType;
   readonly isEditMode = computed(() => this.task !== null);
-  readonly statusOptions = Object.values(Status);
+  readonly statusOptions: Status[] = [
+    Status.notStarted,
+    Status.started,
+    Status.completed,
+  ]
 
   @Output() submitted = new EventEmitter<Task>();
   @Output() cancelled = new EventEmitter<void>();
@@ -53,6 +57,19 @@ export class AddOrEditTaskFrom {
 
   cancel(): void {
     this.cancelled.emit();
+  }
+
+  getOptionsName(status: Status): string {
+    switch (status) {
+      case Status.notStarted:
+        return 'Not Started';
+      case Status.started:
+        return 'Started';
+      case Status.completed:
+        return 'Completed';
+      default:
+        return 'Unknown status'
+    }
   }
 }
 

@@ -17,7 +17,7 @@
       <mat-select formControlName="status">
         @for (option of statusOptions; track option) {
           <mat-option [value]="option">
-            {{ option }}
+            {{ getOptionsName(option) }}
           </mat-option>
         }
       </mat-select>
