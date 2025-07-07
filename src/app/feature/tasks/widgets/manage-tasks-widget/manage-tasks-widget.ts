@@ -8,6 +8,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 import {SearchBar} from '../../components/search-bar/search-bar';
 import {Status} from '../../../../../core/contracts/status';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-manage-tasks-widget',
@@ -15,7 +16,8 @@ import {Status} from '../../../../../core/contracts/status';
     TasksList,
     MatButton,
     MatIcon,
-    SearchBar
+    SearchBar,
+    MatPaginator,
   ],
   templateUrl: './manage-tasks-widget.html',
   styleUrl: './manage-tasks-widget.scss'
@@ -58,10 +60,18 @@ export class ManageTasksWidget implements OnInit {
   }
 
   public async onTitleFilterChanged(titleFilter: string): Promise<void> {
-    await this.tasksStore.loadTasks(this.tasksStore.getPaginationParams(), titleFilter, this.tasksStore.getStatusFilter());
+    await this.tasksStore.loadTasks({offset: 0, limit: 10}, titleFilter, this.tasksStore.getStatusFilter());
   }
 
   public async onStatusFilterChanged(statusFilter: Status | undefined): Promise<void> {
-    await this.tasksStore.loadTasks(this.tasksStore.getPaginationParams(), this.tasksStore.getTitleFilter(), statusFilter);
+    await this.tasksStore.loadTasks({offset: 0, limit: 10}, this.tasksStore.getTitleFilter(), statusFilter);
+  }
+
+  async onPageChange(event: PageEvent) {
+    const offset = event.pageIndex * event.pageSize;
+    await this.tasksStore.loadTasks({
+      offset: offset,
+      limit: event.pageSize
+    }, this.tasksStore.getTitleFilter(), this.tasksStore.getStatusFilter());
   }
 }

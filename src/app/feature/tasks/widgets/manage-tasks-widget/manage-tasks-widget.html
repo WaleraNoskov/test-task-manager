@@ -6,3 +6,8 @@
 <app-search-bar (titleFilterChanged)="onTitleFilterChanged($event)" (statusChanged)="onStatusFilterChanged($event)"/>
 
 <app-tasks-list [tasks]="tasksStore.getTasks()" (update)="openUpdateDialog($event)" (delete)="deleteTask($event)"/>
+
+<mat-paginator [pageSize]="tasksStore.getPaginationParams().limit"
+               [length]="tasksStore.getTotalTaskCount()"
+               [pageIndex]="tasksStore.getPaginationParams().offset / tasksStore.getPaginationParams().limit"
+(page)="onPageChange($event)"></mat-paginator>
