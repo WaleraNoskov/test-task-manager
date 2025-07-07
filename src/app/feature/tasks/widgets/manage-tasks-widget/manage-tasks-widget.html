@@ -1,3 +1,6 @@
-<button class="add-button-container" matButton="outlined" (click)="openCreateDialog()">Add</button>
+<button class="add-button-container" matButton="filled" (click)="openCreateDialog()">
+  <mat-icon>add</mat-icon>
+  <span>Add</span>
+</button>
 
 <app-tasks-list [tasks]="tasksStore.getTasks()" (update)="openUpdateDialog($event)" (delete)="deleteTask($event)"/>

@@ -6,6 +6,7 @@ import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {getOptionsName} from '../../../../../core/contracts/status';
 import {RouterLink} from '@angular/router';
+import {MatChip} from '@angular/material/chips';
 
 @Component({
   selector: 'app-tasks-list',
@@ -19,7 +20,8 @@ import {RouterLink} from '@angular/router';
     MatMenu,
     MatIcon,
     MatButton,
-    RouterLink
+    RouterLink,
+    MatChip
   ],
   templateUrl: './tasks-list.html',
   styleUrl: './tasks-list.scss'

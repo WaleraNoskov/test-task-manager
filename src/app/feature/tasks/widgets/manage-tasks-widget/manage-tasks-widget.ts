@@ -5,12 +5,14 @@ import {MatButton} from '@angular/material/button';
 import {AddOrEditTaskDialogService} from '../add-or-edit-task-dialog-service';
 import {Task} from '../../../../../core/entities/task';
 import {NavigationEnd, Router} from '@angular/router';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-manage-tasks-widget',
   imports: [
     TasksList,
-    MatButton
+    MatButton,
+    MatIcon
   ],
   templateUrl: './manage-tasks-widget.html',
   styleUrl: './manage-tasks-widget.scss'

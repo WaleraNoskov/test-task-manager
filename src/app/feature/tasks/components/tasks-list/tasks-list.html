@@ -1,11 +1,14 @@
 <mat-list>
   @for (task of tasks; track task.id) {
     <mat-list-item [lines]="2">
-      <span matListItemTitle>{{task.title}}</span>
-      {{task.description}}
+      <span matListItemTitle>{{ task.title }}</span>
+      {{ task.description }}
       <div matListItemMeta class="meta">
-        <span class="status">{{getOptionsName(task.status)}}</span>
-        <button matButton="text" [routerLink]="['/tasks', task.id]">View</button>
+        <mat-chip>{{ getOptionsName(task.status) }}</mat-chip>
+        <button matButton="tonal" [routerLink]="['/tasks', task.id]">
+          <span>View</span>
+          <mat-icon>open_in_new</mat-icon>
+        </button>
         <button matIconButton [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
