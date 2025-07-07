@@ -58,7 +58,7 @@ describe('TasksStore', () => {
   });
 
   it('should create task and reload list', async () => {
-    taskServiceSpy.create.and.resolveTo('3');
+    taskServiceSpy.create.and.resolveTo(3);
     taskServiceSpy.getAllTasksPaginated.and.resolveTo({ items: mockTasks, total: 2 });
 
     await store.create({ title: 'New', description: '', status: Status.started });

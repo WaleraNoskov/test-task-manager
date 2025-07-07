@@ -45,13 +45,14 @@ export class TaskService implements ITaskService {
     return await store.get(numericId) ?? null;
   }
 
-  async create(task: Task): Promise<string> {
+  async create(task: Task): Promise<number> {
     const db = await this.idbService.db;
     const tx = db.transaction('tasks', 'readwrite');
     const store = tx.objectStore('tasks');
 
-    const id = await store.add(task);
-    return id.toString();
+    const { id, ...taskWithoutId } = task;
+
+    return await db.add('tasks', taskWithoutId as Task);
   }
 
   async update(task: Task): Promise<void> {

@@ -49,7 +49,7 @@ describe('TaskService', () => {
   it('should create a task and return id', async () => {
     const task: Task = { title: 'New Task', description: '', status: Status.notStarted };
     const id = await service.create(task);
-    expect(id).toBe('4');
+    expect(id).toBe(4);
   });
 
   it('should return a task by id', async () => {

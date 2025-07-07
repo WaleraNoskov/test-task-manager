@@ -7,7 +7,7 @@ export interface ITaskService {
 
   getById(id: string): Promise<Task | null>;
 
-  create(task: Task): Promise<string>;
+  create(task: Task): Promise<number>;
 
   update(task: Task): Promise<void>;
 
