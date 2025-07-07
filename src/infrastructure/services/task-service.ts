@@ -66,12 +66,12 @@ export class TaskService implements ITaskService {
     await store.put(task);
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: number): Promise<void> {
     const db = await this.idbService.db;
     const tx = db.transaction('tasks', 'readwrite');
     const store = tx.objectStore('tasks');
 
-    const numericId = Number(id);
+    const numericId = id;
     await store.delete(numericId);
   }
 }

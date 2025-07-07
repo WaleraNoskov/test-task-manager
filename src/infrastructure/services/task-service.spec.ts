@@ -69,7 +69,7 @@ describe('TaskService', () => {
   });
 
   it('should delete a task by id', async () => {
-    await service.delete('1');
+    await service.delete(1);
     expect(mockDb.transaction).toHaveBeenCalled();
   });
 

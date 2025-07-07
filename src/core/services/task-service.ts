@@ -11,5 +11,5 @@ export interface ITaskService {
 
   update(task: Task): Promise<void>;
 
-  delete(id: string): Promise<void>;
+  delete(id: number): Promise<void>;
 }
