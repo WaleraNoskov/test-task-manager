@@ -49,7 +49,6 @@ export class TaskDetailsPage {
     if (task.id) {
       await this.taskService.delete(task.id)
       await this.router.navigate(['/tasks/']);
-      location.reload();
     }
   }
 
