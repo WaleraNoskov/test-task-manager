@@ -3,7 +3,8 @@
     <mat-list-item [lines]="2">
       <span matListItemTitle>{{task.title}}</span>
       {{task.description}}
-      <div matListItemMeta>
+      <div matListItemMeta class="meta">
+        <span class="status">{{getOptionsName(task.status)}}</span>
         <button matIconButton [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>

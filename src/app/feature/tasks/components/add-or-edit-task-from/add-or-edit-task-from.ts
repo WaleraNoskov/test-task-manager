@@ -1,7 +1,7 @@
 import {Component, computed, EventEmitter, Inject, Output} from '@angular/core';
 import {Task} from '../../../../../core/entities/task';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {Status} from '../../../../../core/contracts/status';
+import {getOptionsName, Status} from '../../../../../core/contracts/status';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatButton} from '@angular/material/button';
@@ -59,18 +59,7 @@ export class AddOrEditTaskFrom {
     this.cancelled.emit();
   }
 
-  getOptionsName(status: Status): string {
-    switch (status) {
-      case Status.notStarted:
-        return 'Not Started';
-      case Status.started:
-        return 'Started';
-      case Status.completed:
-        return 'Completed';
-      default:
-        return 'Unknown status'
-    }
-  }
+  protected readonly getOptionsName = getOptionsName;
 }
 
 type TaskFormType = FormGroup<{

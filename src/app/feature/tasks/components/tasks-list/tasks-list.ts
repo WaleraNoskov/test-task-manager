@@ -4,6 +4,7 @@ import {MatList, MatListItem, MatListItemTitle} from '@angular/material/list';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
+import {getOptionsName} from '../../../../../core/contracts/status';
 
 @Component({
   selector: 'app-tasks-list',
@@ -26,4 +27,5 @@ export class TasksList {
   @Output() viewDetails: EventEmitter<Task> = new EventEmitter();
   @Output() update = new EventEmitter<Task>();
   @Output() delete = new EventEmitter<Task>();
+  protected readonly getOptionsName = getOptionsName;
 }
