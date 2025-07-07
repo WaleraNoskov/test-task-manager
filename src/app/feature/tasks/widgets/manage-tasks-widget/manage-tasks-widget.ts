@@ -6,13 +6,16 @@ import {AddOrEditTaskDialogService} from '../add-or-edit-task-dialog-service';
 import {Task} from '../../../../../core/entities/task';
 import {NavigationEnd, Router} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
+import {SearchBar} from '../../components/search-bar/search-bar';
+import {Status} from '../../../../../core/contracts/status';
 
 @Component({
   selector: 'app-manage-tasks-widget',
   imports: [
     TasksList,
     MatButton,
-    MatIcon
+    MatIcon,
+    SearchBar
   ],
   templateUrl: './manage-tasks-widget.html',
   styleUrl: './manage-tasks-widget.scss'
@@ -52,5 +55,13 @@ export class ManageTasksWidget implements OnInit {
   public async deleteTask(task: Task): Promise<void> {
     if (task.id)
       await this.tasksStore.delete(task.id);
+  }
+
+  public async onTitleFilterChanged(titleFilter: string): Promise<void> {
+    await this.tasksStore.loadTasks(this.tasksStore.getPaginationParams(), titleFilter, this.tasksStore.getStatusFilter());
+  }
+
+  public async onStatusFilterChanged(statusFilter: Status | undefined): Promise<void> {
+    await this.tasksStore.loadTasks(this.tasksStore.getPaginationParams(), this.tasksStore.getTitleFilter(), statusFilter);
   }
 }

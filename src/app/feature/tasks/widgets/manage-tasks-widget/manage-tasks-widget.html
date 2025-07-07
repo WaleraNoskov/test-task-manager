@@ -3,4 +3,6 @@
   <span>Add</span>
 </button>
 
+<app-search-bar (titleFilterChanged)="onTitleFilterChanged($event)" (statusChanged)="onStatusFilterChanged($event)"/>
+
 <app-tasks-list [tasks]="tasksStore.getTasks()" (update)="openUpdateDialog($event)" (delete)="deleteTask($event)"/>

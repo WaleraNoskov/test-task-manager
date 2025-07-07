@@ -6,7 +6,7 @@
       <div matListItemMeta class="meta">
         <mat-chip>{{ getOptionsName(task.status) }}</mat-chip>
         <button matButton="tonal" [routerLink]="['/tasks', task.id]">
-          <span>View</span>
+          <span>Details</span>
           <mat-icon>open_in_new</mat-icon>
         </button>
         <button matIconButton [matMenuTriggerFor]="menu">

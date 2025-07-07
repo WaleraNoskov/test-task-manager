@@ -1,0 +1,23 @@
+<mat-form-field class="title-filter" appearance="outline">
+  <mat-label>Title filter</mat-label>
+  <input matInput type="text" [(ngModel)]="titleFilter" (ngModelChange)="titleFilterChanged.emit(titleFilter)">
+  @if (titleFilter) {
+    <button matSuffix matIconButton aria-label="Clear" (click)="titleFilter = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>Status</mat-label>
+  <mat-select>
+    <mat-option [value]="null" (click)="statusChanged.emit(undefined)">
+      --
+    </mat-option>
+    @for (option of statusOptions; track option) {
+      <mat-option [value]="option" (click)="statusChanged.emit(option)">
+        {{ getOptionsName(option) }}
+      </mat-option>
+    }
+  </mat-select>
+</mat-form-field>
