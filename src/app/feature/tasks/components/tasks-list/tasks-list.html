@@ -3,6 +3,21 @@
     <mat-list-item [lines]="2">
       <span matListItemTitle>{{task.title}}</span>
       {{task.description}}
+      <div matListItemMeta>
+        <button matIconButton [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu>
+          <button mat-menu-item (click)="update.emit(task)">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="delete.emit(task)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
     </mat-list-item>
   }
 </mat-list>

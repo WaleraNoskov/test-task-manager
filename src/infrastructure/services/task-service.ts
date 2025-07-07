@@ -4,6 +4,7 @@ import { IndexedDbService } from '../indexed-db.service';
 import {PaginationResult} from '../../core/contracts/pagination-result';
 import {Injectable} from '@angular/core';
 import { Task } from '../../core/entities/task';
+import {Status} from '../../core/contracts/status';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService implements ITaskService {
@@ -47,12 +48,16 @@ export class TaskService implements ITaskService {
 
   async create(task: Task): Promise<number> {
     const db = await this.idbService.db;
-    const tx = db.transaction('tasks', 'readwrite');
-    const store = tx.objectStore('tasks');
 
-    const { id, ...taskWithoutId } = task;
+    const { id, status, ...rest } = task;
 
-    return await db.add('tasks', taskWithoutId as Task);
+    const taskToInsert: Task = {
+      ...rest,
+      status: Status.notStarted,
+    };
+
+    const insertedId = await db.add('tasks', taskToInsert);
+    return insertedId;
   }
 
   async update(task: Task): Promise<void> {
